@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">My Application</string>
+
+    <string name="welcomeNote">Selamat Datang di Mediagnosis</string>
+    <string name="buttonMulai">Mulai Diagnosis</string>
+    <string name="buttonKamusPenyakit">Kamus Penyakit</string>
+    <string name="buttonInfoSosialisasi">Info Penyuluhan &amp; Sosialisasi</string>
+
+    <string name="action_settings">Settings</string>
+</resources>
