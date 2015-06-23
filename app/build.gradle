@@ -5,7 +5,7 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "net.cyberits.valend69.myapplication"
+        applicationId "net.cyberits.valend69.mediagnosis"
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1
