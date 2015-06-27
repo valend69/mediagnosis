@@ -10,16 +10,18 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 /*import net.cyberits.valend69.test.R;*/
 
 public class DiagnosisActivity extends Activity
 {
 
-    public String result = "Result : "; // variabel buat isi result yang di lempar ke activity result
+    public String result; // variabel buat isi result yang di lempar ke activity result
     private int flagD = 0; // counter kecocokan pengguna terhadap penyakit DBD
     private int flagT = 0; // counter kecocokan pengguna terhadap penyakit Tifus
 
@@ -39,7 +41,9 @@ public class DiagnosisActivity extends Activity
 
         replaceFragment1(); // jalanin fungsi fragment pertama kali (liat bawah untuk detail) intinya ini akan "semi" rekursif sampai ke pertanyaan ke 13
 
-        // disini harusnya panggil fungsi cetak resultyang lempar ke activity result
+
+
+
     }
 
     public void replaceFragment1() // fungsi untuk isi LinearLayout dengan fragment pertama
@@ -53,6 +57,8 @@ public class DiagnosisActivity extends Activity
         Ya.setOnClickListener(new View.OnClickListener() { // masuk ke fungsi ini kalo tombol ya yang sedang tampil di run time di tekan
             @Override // ya override,kalo ga ngerti copas aja
             public void onClick(View v) { // di dalem fungsi ini di definisiin mau ngapa-ngapain aja sementara panggil fungsi replaceFragment selanjutnya aja
+                flagD++;
+                flagT++;
                 replaceFragment2(); // fungsi replace fragment selanjutnya dipanggil
             }
         });
@@ -76,6 +82,8 @@ public class DiagnosisActivity extends Activity
         Ya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                flagD++;
+                flagT++;
                 replaceFragment3();
             }
         });
@@ -98,6 +106,7 @@ public class DiagnosisActivity extends Activity
         Ya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                flagT++;
                 replaceFragment4();
             }
         });
@@ -120,6 +129,8 @@ public class DiagnosisActivity extends Activity
         Ya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                flagD++;
+                flagT++;
                 replaceFragment5();
             }
         });
@@ -142,6 +153,7 @@ public class DiagnosisActivity extends Activity
         Ya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                flagT++;
                 replaceFragment6();
             }
         });
@@ -164,6 +176,7 @@ public class DiagnosisActivity extends Activity
         Ya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                flagT++;
                 replaceFragment7();
             }
         });
@@ -186,6 +199,7 @@ public class DiagnosisActivity extends Activity
         Ya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                flagD++;
                 replaceFragment8();
             }
         });
@@ -208,6 +222,7 @@ public class DiagnosisActivity extends Activity
         Ya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                flagT++;
                 replaceFragment9();
             }
         });
@@ -230,6 +245,7 @@ public class DiagnosisActivity extends Activity
         Ya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                flagT++;
                 replaceFragment10();
             }
         });
@@ -252,6 +268,7 @@ public class DiagnosisActivity extends Activity
         Ya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                flagD++;
                 replaceFragment11();
             }
         });
@@ -274,6 +291,7 @@ public class DiagnosisActivity extends Activity
         Ya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                flagD++;
                 replaceFragment12();
             }
         });
@@ -296,6 +314,7 @@ public class DiagnosisActivity extends Activity
         Ya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                flagT++;
                 replaceFragment13();
             }
         });
@@ -315,17 +334,32 @@ public class DiagnosisActivity extends Activity
         fragmentTransaction.replace(R.id.diagnose_fragment_container, diagnoseFragment13);
         fragmentTransaction.commit();
 
-        /*Ya.setOnClickListener(new View.OnClickListener() {
+        Ya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replaceFragment14();
+                flagT++;
+                generateResult();
+                //replaceFragment14();
             }
         });
         Tidak.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replaceFragment14();
+                generateResult();
+                //replaceFragment14();
             }
-        });*/ //komen dulu ya
+        }); //komen dulu ya
+    }
+
+    public void generateResult()
+    {
+        result = "Result = DBD : "+flagD*100/maxFlagD+"% /n Tifus : "+flagT*100/maxFlagT+"%";
+
+        Bundle b = new Bundle();
+        b.putString("result_text", result);
+        Intent resActivity = new Intent(this, ResultActivity.class);
+        resActivity.putExtras(b);
+
+        this.startActivity(resActivity);
     }
 }
