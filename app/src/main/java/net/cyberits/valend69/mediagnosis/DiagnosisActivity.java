@@ -252,22 +252,80 @@ public class DiagnosisActivity extends Activity
         Ya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                DiagnosisFragment10 diagnoseFragment10 = new DiagnosisFragment10();
-                fragmentTransaction.replace(R.id.diagnose_fragment_container, diagnoseFragment10);
-                fragmentTransaction.commit();
+                replaceFragment11();
             }
         });
         Tidak.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                DiagnosisFragment10 diagnoseFragment10 = new DiagnosisFragment10();
-                fragmentTransaction.replace(R.id.diagnose_fragment_container, diagnoseFragment10);
-                fragmentTransaction.commit();
+                replaceFragment11();
             }
         });
+    }
+
+    public void replaceFragment11()
+    {
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        DiagnosisFragment11 diagnoseFragment11 = new DiagnosisFragment11();
+        fragmentTransaction.replace(R.id.diagnose_fragment_container, diagnoseFragment11);
+        fragmentTransaction.commit();
+
+        Ya.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment12();
+            }
+        });
+        Tidak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment12();
+            }
+        });
+    }
+
+    public void replaceFragment12()
+    {
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        DiagnosisFragment12 diagnoseFragment12 = new DiagnosisFragment12();
+        fragmentTransaction.replace(R.id.diagnose_fragment_container, diagnoseFragment12);
+        fragmentTransaction.commit();
+
+        Ya.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment13();
+            }
+        });
+        Tidak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment13();
+            }
+        });
+    }
+
+    public void replaceFragment13()
+    {
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        DiagnosisFragment13 diagnoseFragment13 = new DiagnosisFragment13();
+        fragmentTransaction.replace(R.id.diagnose_fragment_container, diagnoseFragment13);
+        fragmentTransaction.commit();
+
+        /*Ya.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment14();
+            }
+        });
+        Tidak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment14();
+            }
+        });*/ //komen dulu ya
     }
 }
