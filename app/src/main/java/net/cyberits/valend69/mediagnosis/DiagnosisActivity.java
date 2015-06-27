@@ -11,75 +11,82 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 /*import net.cyberits.valend69.test.R;*/
 
 public class DiagnosisActivity extends Activity
 {
-    public int counter;
+    public int counter=1;
     public final int maxCounter = 13;
+
+    int flag = 0;
+
+    Button Ya;
+    Button Tidak;
+
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diagnosis);
+        Ya = (Button) findViewById(R.id.button_y);
+        Tidak = (Button) findViewById(R.id.button_t);
 
-        for( counter=1; counter<=maxCounter; counter++)
-        {
-            FragmentManager fragmentManager = getFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            if(counter==1){
-                DiagnosisFragment1 diagnoseFragment1 = new DiagnosisFragment1();
-                fragmentTransaction.add(R.id.diagnose_fragment_container, diagnoseFragment1);
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        DiagnosisFragment1 diagnoseFragment1 = new DiagnosisFragment1();
+        fragmentTransaction.replace(R.id.diagnose_fragment_container, diagnoseFragment1);
+        fragmentTransaction.commit();
+
+        Ya.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                flag++;
+                counter++;
+                replaceFragment2();
             }
-            else if(counter==2){
-                DiagnosisFragment2 diagnoseFragment2 = new DiagnosisFragment2();
-                fragmentTransaction.replace(R.id.diagnose_fragment_container, diagnoseFragment2);
+        });
+
+        Tidak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                counter++;
+                replaceFragment2();
             }
-            else if(counter==3){
+        });
+    }
+
+    public void replaceFragment2()
+    {
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        DiagnosisFragment2 diagnoseFragment2 = new DiagnosisFragment2();
+        fragmentTransaction.replace(R.id.diagnose_fragment_container, diagnoseFragment2);
+        fragmentTransaction.commit();
+
+        Ya.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                flag++;
+                counter++;
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 DiagnosisFragment3 diagnoseFragment3 = new DiagnosisFragment3();
                 fragmentTransaction.replace(R.id.diagnose_fragment_container, diagnoseFragment3);
+                fragmentTransaction.commit();
             }
-            else if(counter==4){
-                DiagnosisFragment4 diagnoseFragment4 = new DiagnosisFragment4();
-                fragmentTransaction.replace(R.id.diagnose_fragment_container, diagnoseFragment4);
+        });
+        Tidak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                counter++;
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                DiagnosisFragment3 diagnoseFragment3 = new DiagnosisFragment3();
+                fragmentTransaction.replace(R.id.diagnose_fragment_container, diagnoseFragment3);
+                fragmentTransaction.commit();
             }
-            else if(counter==5){
-                DiagnosisFragment5 diagnoseFragment5 = new DiagnosisFragment5();
-                fragmentTransaction.replace(R.id.diagnose_fragment_container, diagnoseFragment5);
-            }
-            else if(counter==6){
-                DiagnosisFragment6 diagnoseFragment6 = new DiagnosisFragment6();
-                fragmentTransaction.replace(R.id.diagnose_fragment_container, diagnoseFragment6);
-            }
-            else if(counter==7){
-                DiagnosisFragment7 diagnoseFragment7 = new DiagnosisFragment7();
-                fragmentTransaction.replace(R.id.diagnose_fragment_container, diagnoseFragment7);
-            }
-            else if(counter==8){
-                DiagnosisFragment8 diagnoseFragment8 = new DiagnosisFragment8();
-                fragmentTransaction.replace(R.id.diagnose_fragment_container, diagnoseFragment8);
-            }
-            else if(counter==9){
-                DiagnosisFragment9 diagnoseFragment9 = new DiagnosisFragment9();
-                fragmentTransaction.replace(R.id.diagnose_fragment_container, diagnoseFragment9);
-            }
-            else if(counter==10){
-                DiagnosisFragment10 diagnoseFragment10 = new DiagnosisFragment10();
-                fragmentTransaction.replace(R.id.diagnose_fragment_container, diagnoseFragment10);
-            }
-            else if(counter==11){
-                DiagnosisFragment11 diagnoseFragment11 = new DiagnosisFragment11();
-                fragmentTransaction.replace(R.id.diagnose_fragment_container, diagnoseFragment11);
-            }
-            else if(counter==12){
-                DiagnosisFragment12 diagnoseFragment12 = new DiagnosisFragment12();
-                fragmentTransaction.replace(R.id.diagnose_fragment_container, diagnoseFragment12);
-            }
-            else {
-                DiagnosisFragment13 diagnoseFragment13 = new DiagnosisFragment13();
-                fragmentTransaction.replace(R.id.diagnose_fragment_container, diagnoseFragment13);
-            }
-            fragmentTransaction.commit();
-        }
+        });
     }
 }
